@@ -1,0 +1,36 @@
+package array;
+
+import java.util.Scanner;
+
+public class TripltSum {
+//    brute force worst time complexity with O(n^3)
+public static int pairSum(int[] arr,int target){
+    int n = arr.length;
+    int count = 0;
+    for(int i=0;i<n;i++){  //first no
+        for(int j=i+1;j<n;j++){//2nd no.
+            for(int k=j+1;k<n;k++){ //3rd no.
+                if(arr[i]+arr[j]+arr[k]==target)
+                    count++;
+            }
+
+        }
+    }
+    return count;
+}
+    public static void main(String[] args){
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Enter the size: ");
+        int n = sc.nextInt();
+        System.out.println("enter the target");
+        int target = sc.nextInt();
+        int arr[] = new int[n];
+        System.out.println("enter the array:");
+        for(int i=0;i<arr.length;i++){
+            arr[i] = sc.nextInt();
+        }
+        int ans = pairSum(arr,target);
+        System.out.println("total no of pairs:");
+        System.out.println(ans);
+    }
+}
