@@ -1,0 +1,60 @@
+package array;
+
+import java.util.Scanner;
+
+public class setMatrixZero {
+    public static int[][] SetMatrixZero(int[][] matrix){
+        int r = matrix.length;
+        int c = matrix[0].length;
+        boolean firstcol = false;
+        for(int i=0 ;i<r ;i++){
+            if(matrix[i][0]==0) firstcol=true;
+            for(int j=1;j<c;j++){
+                if(matrix[i][j]==0){
+                    matrix[i][0]=0;
+                    matrix[0][j]=0;
+                }
+            }
+        }
+        for(int i=1 ; i<r ; i++){
+            for(int j=1;j<c;j++){
+               if(matrix[i][0]==0 || matrix[0][j]==0){
+                   matrix[i][j]=0;
+               }
+            }
+        }
+        if(matrix[0][0]==0){
+            for(int j=0;j<c ; j++){
+                matrix[0][j]=0;
+            }
+        }
+        if(firstcol){
+            for(int i=0;i<r;i++){
+                matrix[i][0]=0;
+            }
+        }
+        return matrix;
+    }
+    public static void main(String[] args){
+        Scanner sc = new Scanner(System.in);
+        System.out.println("enter the row:");
+        int r = sc.nextInt();
+        System.out.println("enter the col:");
+        int c = sc.nextInt();
+        int[][] matrix = new int[r][c];
+        System.out.println("enter the matrix:");
+        for(int i=0 ; i<r ;i++){
+            for(int j=0 ;j<c ;j++){
+                matrix[i][j]=sc.nextInt();
+            }
+        }
+        SetMatrixZero(matrix);
+        System.out.println("the output is:");
+        for(int i=0 ; i<r ;i++){
+            for(int j=0 ;j<c ;j++){
+                System.out.print(matrix[i][j]+" ");
+            }
+            System.out.println();
+        }
+    }
+}
