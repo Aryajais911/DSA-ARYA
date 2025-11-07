@@ -1,0 +1,37 @@
+package Strings;
+
+import java.util.HashMap;
+
+public class validAnagrams {
+    public static HashMap<Character, Integer> makeFrqOf(String s){
+          HashMap<Character, Integer> mp = new HashMap<>();
+          for(int i=0 ;i<s.length() ; i++){
+              char ch = s.charAt(i);
+              if(!mp.containsKey(ch)){
+                  mp.put(ch,1);
+              }
+              else{
+                  mp.put(ch,mp.get(ch)+1);
+              }
+
+          }
+          return mp;
+    }
+    public static boolean isAnagram(String s1 , String s2){
+        if(s1.length() != s2.length()) return false;
+        HashMap<Character,Integer> mp1 = makeFrqOf(s1);
+        HashMap<Character,Integer> mp2 = makeFrqOf(s2);
+        return mp1.equals(mp2);
+    }
+    public static void main(String[] args){
+        String s1 = "anagram";
+        String s2 = "nagaram";
+        boolean ans = isAnagram(s1,s2);
+        if(ans){
+            System.out.println("s1 and s2 are valid Anagram");
+        }
+        else{
+            System.out.println("s1 and s2 is not valid Anagram");
+        }
+    }
+}
