@@ -1,0 +1,40 @@
+package Strings;
+
+import java.util.Scanner;
+
+public class count_palindrom_in_Sentence {
+    public static boolean isPalindrom(String s){
+        if(s.length() == 1) return true;
+        int i=0;
+        int j= s.length()-1;
+        while(i<j){
+            if(s.charAt(i) == s.charAt(j)){
+                i++;
+                j--;
+            }
+            else{
+                return false;
+            }
+        }
+        return true;
+    }
+    public static void main(String[] args){
+        Scanner sc = new Scanner(System.in);
+        System.out.println("enter the sentence");
+        String s = sc.nextLine();
+        String word[] = s.split(" "); // stores each word of string by spliting it on basis of space
+//        for(int i=0 ;i<word.length ;i++){
+//            System.out.println(word[i]);
+//        }
+        int count = 0;
+        for(int i=0 ;i<word.length ;i++){
+            String w = word[i].toLowerCase();
+            w = w.replaceAll("[^a-z]", ""); //This will remove everything except lowercase letters (a–z). eg -> 1> wow! -= wow  , 2> ma@dam! = madam
+            if(isPalindrom(w)){
+                count++;
+            }
+        }
+        System.out.println("no. of palindrom in a sentence is:");
+        System.out.println(count);
+    }
+}
