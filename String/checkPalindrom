@@ -1,0 +1,29 @@
+package Strings;
+import java.util.*;
+public class checkPalindrom {
+    public static void main(String[] args){
+        Scanner sc = new Scanner(System.in);
+        String str = sc.next();
+        int i=0;
+        int j=str.length()-1;
+        int flag = 0;
+        while(i<j){
+            char s1 = Character.toLowerCase(str.charAt(i));
+            char s2 = Character.toLowerCase(str.charAt(j));
+            if(s1!=s2){
+                flag = -1;
+                break;
+            }
+            else{
+                i++;
+                j--;
+            }
+        }
+        if(flag == 0){
+            System.out.println("true");
+        }
+        else{
+            System.out.println("false");
+        }
+    }
+}
