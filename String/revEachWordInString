@@ -1,0 +1,27 @@
+package Strings;
+
+import java.util.ArrayList;
+
+public class reverseEachWordInAString {
+    public static void main(String[] args){
+         String s = " Bishal  is a bad Boy ";
+         String ans = "";
+         int i=0;
+         while(i < s.length()){
+             while (i < s.length() && s.charAt(i) == ' ') {
+                 ans += " ";
+                 i++;
+             }
+             int j=i;
+             while(j < s.length() && s.charAt(j)!= ' ') {
+                 j++;
+             }
+             if(i<j){
+                 StringBuilder sb = new StringBuilder(s.substring(i,j+1));
+                 ans += sb.reverse();
+             }
+             i=j;
+         }
+        System.out.println(ans);
+    }
+}
