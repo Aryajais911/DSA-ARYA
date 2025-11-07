@@ -1,0 +1,28 @@
+package Strings;
+
+import java.util.Scanner;
+
+public class strSubsequences {
+    public static void subSequences(String s , String curr){
+        if(s.length()==0){
+            System.out.print(curr);
+            return;
+        }
+        char ch = s.charAt(0);
+        String rest = s.substring(1);
+//        Include
+        subSequences(rest,curr+ch);
+//        Exclude
+        subSequences(rest , curr);
+    }
+    public static void main(String[] args){
+        Scanner sc = new Scanner(System.in);
+        System.out.println("enter the String");
+        String words = sc.next(); // let words = aabcdaabc
+        System.out.println(words);
+        System.out.println("Subsequences are:");
+        subSequences(words , "");
+
+    }
+
+}
