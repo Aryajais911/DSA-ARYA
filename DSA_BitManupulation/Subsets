@@ -1,0 +1,26 @@
+class Solution {
+    List<List<Integer>> result = new ArrayList<>();
+; 
+    public void setAns(int[] num , int idx , List<Integer> ans){  //[1,2,3]
+         List<List<Integer>> arr = new ArrayList<>();
+        // base case
+        if(idx >= num.length){
+           result.add(new ArrayList<>(ans));
+            return;
+
+        }
+        int currNum = num[0];
+        // case 1  including 
+        ans.add(num[idx]);
+        setAns(num,idx+1,ans);
+        // case 2 excluding
+        ans.remove(ans.size()-1); // backtracking
+        setAns(num,idx+1,ans);
+
+    }
+    public List<List<Integer>> subsets(int[] nums) {
+      List<Integer> arr = new ArrayList<>();
+       setAns(nums,0,arr);
+       return result;
+    }
+}
